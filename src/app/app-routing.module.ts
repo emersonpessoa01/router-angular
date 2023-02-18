@@ -20,6 +20,13 @@ const routes: Routes = [
         component: PaginaComParametrosComponent,
     },
     {
+        path: "lazy-loading",
+        loadChildren: () =>
+            import("./lazy-loading/lazy-loading.module").then(
+                (m) => m.LazyLoadingModule,
+            ),
+    },
+    {
         path: "**",
         component: PaginaNaoEncontradaComponent,
     },
@@ -28,6 +35,7 @@ const routes: Routes = [
         redirectTo: "primeira-pagina",
         pathMatch: "full",
     },
+    
 ];
 
 @NgModule({
