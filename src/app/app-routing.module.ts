@@ -1,3 +1,6 @@
+import { LoginComponent } from './login/login.component';
+import { AuthGuard } from "./auth.guard";
+import { PaginaProtegidaComponent } from "./pagina-protegida/pagina-protegida.component";
 import { PaginaNaoEncontradaComponent } from "./pagina-nao-encontrada/pagina-nao-encontrada.component";
 import { NgModule, Component } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
@@ -27,6 +30,15 @@ const routes: Routes = [
             ),
     },
     {
+        path: "pagina-protegida",
+        component: PaginaProtegidaComponent,
+        canActivate: [AuthGuard],
+    },
+    {
+        path: "login",
+        component: LoginComponent,
+    },
+    {
         path: "**",
         component: PaginaNaoEncontradaComponent,
     },
@@ -35,7 +47,6 @@ const routes: Routes = [
         redirectTo: "primeira-pagina",
         pathMatch: "full",
     },
-    
 ];
 
 @NgModule({
